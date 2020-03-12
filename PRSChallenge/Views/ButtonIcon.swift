@@ -13,6 +13,9 @@ struct ButtonIcon: View {
 
     var body: some View {
         Image(name)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+        .frame(width: 25, height: 25)
     }
 }
 

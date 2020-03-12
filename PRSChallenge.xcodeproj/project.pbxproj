@@ -73,11 +73,11 @@
 		82561A03241860AE008680AD /* PRSChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				82561A1824186134008680AD /* Model */,
-				82336CA824193FB40047C1AB /* Views */,
 				82561A04241860AE008680AD /* AppDelegate.swift */,
 				82561A06241860AE008680AD /* SceneDelegate.swift */,
 				82561A08241860AE008680AD /* ContentView.swift */,
+				82561A1824186134008680AD /* Model */,
+				82336CA824193FB40047C1AB /* Views */,
 				82561A0A241860AF008680AD /* Assets.xcassets */,
 				82561A0F241860AF008680AD /* LaunchScreen.storyboard */,
 				82561A12241860AF008680AD /* Info.plist */,

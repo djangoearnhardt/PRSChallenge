@@ -19,6 +19,7 @@ struct ButtonView: View {
                     .font(.headline)
                 Text(textLabel)
                     .font(.headline)
+                    .frame(width: 100)
             }
         }
         .padding()
