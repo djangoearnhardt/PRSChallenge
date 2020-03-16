@@ -7,7 +7,10 @@
 //
 
 import Foundation
+import Combine
 
 final class UserData: ObservableObject {
-    @Published var move: PossibleMoves.Throw?
+    @Published var competitorMove: String = "rock"
+    @Published var score: Int = 0
+    @Published var shouldWin: Bool = false
 }

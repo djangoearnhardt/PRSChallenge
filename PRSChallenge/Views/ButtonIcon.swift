@@ -21,7 +21,7 @@ struct ButtonIcon: View {
 
 struct ButtonIcon_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonIcon(name: "rock")
+        ButtonIcon(name: "Rock")
     }
 }
 

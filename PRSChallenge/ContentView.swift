@@ -10,14 +10,18 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var userData: UserData
-    
+        
     var body: some View {
         VStack {
-            ButtonView(textLabel: PossibleMoves.Throw.paper.rawValue)
-            ButtonView(textLabel: PossibleMoves.Throw.rock.rawValue)
-            ButtonView(textLabel: PossibleMoves.Throw.scissors.rawValue)
-
-
+            VStack {
+                GameView(score: $userData.score, shouldWin: $userData.shouldWin)
+            }
+            
+            VStack {
+                ButtonView(textLabel: PossibleMoves.Throw.paper.rawValue)
+                ButtonView(textLabel: PossibleMoves.Throw.rock.rawValue)
+                ButtonView(textLabel: PossibleMoves.Throw.scissors.rawValue)
+            }
         }
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 struct PossibleMoves {
-    
+
     enum Throw: String {
         case rock = "rock"
         case paper = "paper"
