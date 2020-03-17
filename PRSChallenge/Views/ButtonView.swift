@@ -10,29 +10,17 @@ import SwiftUI
 
 struct ButtonView: View {
     @EnvironmentObject var userData: UserData
-    
-    var game: Game = Game()
-    
+
     var textLabel: String
     var body: some View {
         Button(action: {
-            switch self.game.userDecision(competitorMove: self.userData.competitorMove, shouldWin: self.userData.shouldWin)  {
-            case self.textLabel:
-                self.userData.score += 1
-                let reset = self.resetGame()
-                self.userData.competitorMove = reset.0
-                self.userData.shouldWin = reset.1
-            default:
-                self.userData.score -= 1
-                let reset = self.resetGame()
-                self.userData.competitorMove = reset.0
-                self.userData.shouldWin = reset.1
-            }
+            self.tallyScore()
+            debugPrint(self.userData.score)
         }) {
             HStack {
                 ButtonIcon(name: textLabel)
                     .font(.headline)
-                Text(textLabel)
+                Text(textLabel.capitalized)
                     .font(.headline)
                     .frame(width: 100)
             }
@@ -52,8 +40,23 @@ struct ButtonView_Previews: PreviewProvider {
 
 extension ButtonView {
     func resetGame() -> (String, Bool) {
-        let move = self.game.moves[Int.random(in: 0...2)]
+        let move = userData.game.moves[Int.random(in: 0...2)]
         let shouldWin = Bool.random()
         return (move, shouldWin)
+    }
+    
+    func tallyScore() {
+        let decision = userData.game.userDecision(competitorMove: self.userData.competitorMove, shouldWin: self.userData.shouldWin)
+        if decision == textLabel {
+            self.userData.score += 1
+            let reset = self.resetGame()
+            self.userData.competitorMove = reset.0
+            self.userData.shouldWin = reset.1
+        } else {
+            self.userData.score -= 1
+            let reset = self.resetGame()
+            self.userData.competitorMove = reset.0
+            self.userData.shouldWin = reset.1
+        }
     }
 }

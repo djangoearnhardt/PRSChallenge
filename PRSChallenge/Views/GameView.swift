@@ -17,19 +17,25 @@ struct GameView: View {
         VStack {
             if userData.score == 10 {
                 Text("Your Score: " + String(userData.score))
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(width: 200)
                 Spacer()
-                    .frame(height: 20)
+                    .frame(height: 50)
             } else {
-                Text("Competitor's Move: " + String(userData.competitorMove))
+                Text("Competitor's Move: " + String(userData.competitorMove.capitalized))
+                Image(userData.competitorMove)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 50, height: 50)
                 Spacer()
                     .frame(height: 20)
                 if shouldWin {
-                    Text("You should win")
+                    Text("Your Move: Win")
                 } else {
-                    Text("You should lose")
+                    Text("Your Move: Lose")
                 }
                 Spacer()
-                    .frame(height: 100)
+                    .frame(height: 50)
             }
         }
     }

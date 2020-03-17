@@ -13,4 +13,5 @@ final class UserData: ObservableObject {
     @Published var competitorMove: String = "rock"
     @Published var score: Int = 0
     @Published var shouldWin: Bool = false
+    @Published var game: Game = Game()
 }

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-class Game {
+class Game : ObservableObject {
     @EnvironmentObject var userData: UserData
     
     var moves: [String]
