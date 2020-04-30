@@ -1,5 +1,5 @@
 //
-//  GameView.swift
+//  ScoreboardView.swift
 //  PRSChallenge
 //
 //  Created by Sam Lobue on 3/16/20.
@@ -8,31 +8,30 @@
 
 import SwiftUI
 
-struct GameView: View {
-    @Binding var score: Int
-    @Binding var shouldWin: Bool
-    @EnvironmentObject var userData: UserData
+struct ScoreboardView: View {
+    
+    @EnvironmentObject var gameStore: GameStore
     
     var body: some View {
         VStack {
-            if userData.score == 10 {
-                Text("Your Score: " + String(userData.score))
+            if gameStore.questionCount == 10 {
+                Text(AppStrings.yourScore + String(gameStore.score))
                     .fixedSize(horizontal: false, vertical: true)
                     .frame(width: 200)
                 Spacer()
                     .frame(height: 50)
             } else {
-                Text("Competitor's Move: " + String(userData.competitorMove.capitalized))
-                Image(userData.competitorMove)
+                Text(AppStrings.competitorsMove + String(gameStore.competitorMove.capitalized))
+                Image(gameStore.competitorMove)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 50, height: 50)
                 Spacer()
                     .frame(height: 20)
-                if shouldWin {
-                    Text("Your Move: Win")
+                if gameStore.shouldWin {
+                    Text(AppStrings.youShouldWin)
                 } else {
-                    Text("Your Move: Lose")
+                    Text(AppStrings.youShouldLose)
                 }
                 Spacer()
                     .frame(height: 50)
@@ -40,9 +39,3 @@ struct GameView: View {
         }
     }
 }
-
-//struct GameView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        GameView(score: 0, shouldWin: false)
-//    }
-//}
